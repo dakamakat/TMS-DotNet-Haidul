@@ -12,22 +12,30 @@ namespace OrganizerN1
         Saturday,
         Sunday
     }
+         
+    
     class Program
     {
-        static void Main(string[] args)
+        static void SameDay(string UserDay)
         {
-            string CurrentDay = Convert.ToString(DateTime.Now.DayOfWeek);
-            Console.WriteLine("Введите текущий день недели");
-            string UserDay = Console.ReadLine();
+         string CurrentDay = Convert.ToString(DateTime.Now.DayOfWeek);          
             if (CurrentDay == UserDay)
             {
-                Console.WriteLine("День недели совпадает");
+                Console.WriteLine("День недели совпадает"); 
             }
             else
             {
                 Console.WriteLine("День недели не совпадает");
             }
-            Console.ReadKey();
         }
+        
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите текущий день недели");
+            string UserDay = Console.ReadLine();
+            SameDay(UserDay);
+            Console.ReadLine();
+        }
+        
     }
 }
