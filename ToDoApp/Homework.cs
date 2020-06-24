@@ -41,7 +41,11 @@ namespace ToDoApp
                 int input = Convert.ToInt32(Console.ReadLine());
                 for (int i = 0; i < input; i++)
                 {
-                    Homework goal = new Homework(Console.ReadLine(), Console.ReadLine(), DateTime.Now.DayOfWeek);
+                    Console.Write("Subject: ");
+                    string subject = Console.ReadLine();
+                    Console.Write("Objective: ");
+                    string objective = Console.ReadLine();
+                    Homework goal = new Homework(subject, objective, DateTime.Now.DayOfWeek);
                     homework.listOfHomeworks.Add(goal);
         }
 
