@@ -59,6 +59,7 @@ namespace ToDoApp
         {
             try
             {
+                Console.Write("Enter an index of homework :");
                 int input = Convert.ToInt32(Console.ReadLine());
                 if (homework.listOfHomeworks != null)
                 {
