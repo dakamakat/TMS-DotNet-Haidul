@@ -29,7 +29,7 @@ namespace ZooApp
             Kind = kind;
         }
 
-        public Animal( string name, KindType kind,string passport) 
+        public Animal(string name, KindType kind,string passport) 
         {
 
             Name = name;

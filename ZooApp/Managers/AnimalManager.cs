@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ZooApp.Interfaces;
+using ZooApp.Enums;
 
 namespace ZooApp.Managers
 {
@@ -24,5 +25,22 @@ namespace ZooApp.Managers
         {
             animal.SetPassport(passport);
         }
+        public Animal CreateAnimal()
+        {
+            return new Animal(); 
+        }
+        public Animal CreateAnimal(string name)
+        {
+            return new Animal(name);
+        }
+        public Animal CreateAnimal(string name, KindType kind)
+        {
+            return new Animal(name, kind);
+        }
+        public Animal CreateAnimal(string name, KindType kind, string passport)
+        {
+            return new Animal(name, kind, passport); 
+        }
+
     }
 }
