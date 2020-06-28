@@ -3,7 +3,7 @@
 
 namespace ZooApp.Interfaces
 {
-    interface IAnimalAction
+    interface IAnimalManager
     {
         void Rename(Animal animal,string name);
         void GetInfo(Animal animal);

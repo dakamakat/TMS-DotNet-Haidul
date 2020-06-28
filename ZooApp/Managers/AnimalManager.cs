@@ -5,7 +5,7 @@ using ZooApp.Interfaces;
 
 namespace ZooApp.Managers
 {
-    class AnimalActions : IAnimalAction
+    class AnimalManager : IAnimalManager
     {
         public void GetInfo(Animal animal)
         {
