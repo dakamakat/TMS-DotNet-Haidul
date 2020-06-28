@@ -5,7 +5,7 @@ using ZooApp.Enums;
 
 namespace ZooApp
 {
-    class Animal:IAnimal
+    class Animal
     {
         private readonly Guid _id = Guid.NewGuid();
         private string _passport;
@@ -36,17 +36,17 @@ namespace ZooApp
             Kind = kind;
             _passport = passport;
         }
-        public void Rename(string name)
+        public Guid GetID()
         {
-            Name = name;
+            return _id;
         }
-        public void GetInfo()
+        public string GetPassport()
         {
-            Console.WriteLine($"Id: {_id}");
-            Console.WriteLine($"Name: {Name}");
-            Console.WriteLine($"Kind: {Kind}");
-            Console.WriteLine($"Passport: {_passport}");
-
+            return _passport;
+        }
+        public void SetPassport(string passport)
+        {
+            _passport = passport;
         }
     }
 
