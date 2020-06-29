@@ -23,10 +23,18 @@ namespace ZooApp.Managers
         }
         public void GetAllAnimals()
         {
-            foreach (var animal in animals)
+            if (animals.Count > 0)
             {
-                _animalmanager.GetInfo(animal);
+                foreach (var animal in animals)
+                {
+                    _animalmanager.GetInfo(animal);
+                }
             }
+            else
+            {
+                Console.WriteLine("Животных в зоопарке нет");
+            }
+            
         }
         public void GetAnimal(Animal animal)
         {
