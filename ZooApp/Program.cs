@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Dynamic;
+using System.Linq;
 using ZooApp.Managers;
 
 namespace ZooApp
@@ -29,12 +30,12 @@ namespace ZooApp
                         }
                     case 3:
                         {
-                            
+                            GetAnimal();
                             break;
                         }
                     case 4:
                         {
-                            _zoo.GetAllAnimals();
+                            GetAllAnimals();
                             break;
                         }
                     case 5:
@@ -77,7 +78,7 @@ namespace ZooApp
                 int input = Convert.ToInt32(Console.ReadLine());
                 if (_zoo.animals != null)
                 {
-                    _zoo.animals.RemoveAt(input);
+                    _zoo.animals.RemoveAt(input-1);
                 }
                 else
                     Console.WriteLine("В зоопарке нет животных");
@@ -86,9 +87,27 @@ namespace ZooApp
             {
                 Console.WriteLine("В зоопарке нет животного с таким номером");
             }
-            
+
 
             Console.WriteLine("Животное успешно удалено");
+        }
+        private static void GetAllAnimals()
+        {
+            _zoo.GetAllAnimals();
+        }
+        private static void GetAnimal()
+        {
+            try
+            {
+                int.TryParse(Console.ReadLine(), out int userInput);
+                _zoo.GetAnimal(_zoo.animals.ElementAt(userInput));
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Животного с такин номером нет");
+            }
+            
         }
         private static void ShowMenu()
         {
