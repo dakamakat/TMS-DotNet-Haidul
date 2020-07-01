@@ -36,9 +36,9 @@ namespace ZooApp.Managers
             }
             
         }
-        public void GetAnimal(Animal animal)
+        public Animal GetAnimalbyId(Guid id)
         {
-            _animalmanager.GetInfo(animal);
+            return animals.Find(x => x.GetID() == id);
         }
     }
 }

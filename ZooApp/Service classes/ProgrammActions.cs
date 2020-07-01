@@ -25,6 +25,27 @@ namespace ZooApp.Managers
             {
                 animal = _animalManager.CreateAnimal();
             }
+            Console.WriteLine("Введите пасспорт: ");
+            var passport = Console.ReadLine();
+            if (!string.IsNullOrEmpty(passport))
+            {
+                animal.SetPassport(passport);
+            }
+            Console.WriteLine("Укажите тип животного:\n 1 - Хищник \n 2 - травоядное ");
+            int.TryParse(Console.ReadLine(), out int userInput);
+            switch(userInput)
+            {
+                case 1:
+                    animal.Kind = Enums.KindType.Predator;
+                    break;
+                case 2:
+                    animal.Kind = Enums.KindType.Herbivorus;
+                    break;
+                default:
+                    Console.WriteLine("Некорректный ввод");
+                    animal.Kind = Enums.KindType.None;
+                    break;
+            }
             _zoo.AddAnimal(animal);
             Console.WriteLine("Животное успешно добавлено");
 
@@ -54,19 +75,32 @@ namespace ZooApp.Managers
         {
             _zoo.GetAllAnimals();
         }
-        public static void GetAnimal()
+        public static Animal GetAnimal()
         {
-            try
+            Animal animal;
+            if (Guid.TryParse(Console.ReadLine(), out Guid id) && (animal = _zoo.GetAnimalbyId(id)) != null)
             {
-                int.TryParse(Console.ReadLine(), out int userInput);
-                _zoo.GetAnimal(_zoo.animals.ElementAt(userInput));
+                return animal;
             }
-            catch (Exception)
+            else
             {
-
-                Console.WriteLine("Животного с такин номером нет");
+                Console.WriteLine("Животное с таким ID не найдено.");
+                return null;
             }
-
+        }
+        private static Animal ChooseAnimal()
+        {
+            Console.Write("Введите ID животного: ");
+            Animal animal;
+            if (Guid.TryParse(Console.ReadLine(), out Guid id) && (animal = _zoo.GetAnimalbyId(id)) != null)
+            {
+                return animal;
+            }
+            else
+            {
+                Console.WriteLine("Животное с таким ID не найдено.");
+                return null;
+            }
         }
         public static void ShowMenu()
         {
