@@ -75,17 +75,12 @@ namespace ZooApp.Managers
         {
             _zoo.GetAllAnimals();
         }
-        public static Animal GetAnimal()
+        public static void GetAnimal()
         {
             Animal animal;
-            if (Guid.TryParse(Console.ReadLine(), out Guid id) && (animal = _zoo.GetAnimalbyId(id)) != null)
+            if ((animal = ChooseAnimal()) != null)
             {
-                return animal;
-            }
-            else
-            {
-                Console.WriteLine("Животное с таким ID не найдено.");
-                return null;
+                _zoo.GetAnimal(animal);
             }
         }
         private static Animal ChooseAnimal()

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,8 +33,11 @@ namespace ZooApp.Managers
             else
             {
                 Console.WriteLine("Животных в зоопарке нет");
-            }
-            
+            }           
+        }
+        public void GetAnimal(Animal animal)
+        {
+            _animalmanager.GetInfo(animal);
         }
         public Animal GetAnimalbyId(Guid id)
         {
