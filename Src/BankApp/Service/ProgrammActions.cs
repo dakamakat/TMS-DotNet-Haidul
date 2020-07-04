@@ -2,6 +2,7 @@
 using BankApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Security;
 using System.Text;
@@ -36,7 +37,6 @@ namespace BankApp
         {
             try
             {
-                var input = Console.ReadLine();
                 Client client;
                 if ((client = ChooseClient()) != null)
                 {
@@ -66,35 +66,34 @@ namespace BankApp
         public static Client ChooseClient()
         {
             Console.Write("Enter id of client: ");
-            Client client;
-            string id = Console.ReadLine();
-            client = (Client)_bankManager.GetClients().Where(c => c._id.Contains(id));
-            if(client != null)
+            var id = Console.ReadLine();
+            foreach (var client in _bankManager.GetClients())
             {
-                return client;
+                if (client._id.Contains(id))
+                {
+                    return client;
+                }
+                
             }
-            else
-            {
-                Console.WriteLine("Client with such id not found");
-                return null;
-            }
-        
+            Console.WriteLine("Client with such id not found");
+            return null;
         }
         public static void TakeMoney()
         {
-            Console.WriteLine("Enter id of client");
-            var id = Console.ReadLine();
-            Console.WriteLine("Enter a sum");
+            Client client;
+            client = ChooseClient();
+            Console.WriteLine("Enter a sum : ");
             decimal.TryParse(Console.ReadLine(), out decimal money);
-            _bankManager.Take(id, money);           
+            _bankManager.Take(client, money);
+
         }
         public static void PutMoney()
         {
-            Console.WriteLine("Enter id of client");
-            var id = Console.ReadLine();
-            Console.WriteLine("Enter a sum");
+            Client client;
+            client = ChooseClient();
+            Console.WriteLine("Enter a sum : ");
             decimal.TryParse(Console.ReadLine(), out decimal money);
-            _bankManager.Put(id, money);
+            _bankManager.Put(client, money);
         }
         public static void ShowMenu()
         {

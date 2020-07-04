@@ -9,20 +9,18 @@ namespace BankApp.Managers
 {
     class BankManager:IBankManager
     {
-        private IList<Client> _clients = new List<Client>();
+        private readonly IList<Client> _clients = new List<Client>();
         private readonly ClientManager _clientManager = new ClientManager();
 
-        public void Put(string id, decimal money)
+        public void Put(Client client, decimal money)
         {
-            Client client = _clients.SingleOrDefault(c => c._id == id);
             if (client != null)
             {
                 client.UpdateBalance(money);
             }
         }
-        public void Take(string id, decimal money)
+        public void Take(Client client, decimal money)
         {
-            Client client = _clients.SingleOrDefault(c => c._id == id);
             if (client != null)
             {
                 if (client.GetBalance() <= money)
@@ -31,17 +29,17 @@ namespace BankApp.Managers
                 }
                 else
                 {
-                    client.UpdateBalance(--money);
+                    client.UpdateBalance(-money);
                 }
             }
-        }
-        public IList<Client> GetClients()
-        {
-            return _clients;
         }
         public void GetClientInfo(Client client)
         {
             _clientManager.GetInfo(client);
+        }
+        public IList<Client> GetClients()
+        {
+            return _clients;
         }
         public void GetAllClients()
         {

@@ -10,7 +10,7 @@ namespace BankApp.Managers
     {
         public void GetInfo(Client client)
         {
-            Console.WriteLine($"Client id : {client.GetId()}");
+            Console.WriteLine($"Client id : {client._id}");
             Console.WriteLine($"Client name : {client.GetFullName()}");
             Console.WriteLine($"Client balance : {client.GetBalance()}");
         }

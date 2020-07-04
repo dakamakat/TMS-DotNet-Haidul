@@ -9,6 +9,7 @@ namespace BankApp.Models
         public readonly string _id;
         private string _fullname;
         private decimal _balance;
+        private readonly List<Account> _accounts = new List<Account>();
 
         public Client()
         {
@@ -31,9 +32,9 @@ namespace BankApp.Models
         {
             return _fullname;
         }
-        public string GetId()
+        public List<Account> GetAccounts()
         {
-            return _id;
+            return _accounts;
         }
         public void SetFullName(string fullname)
         {
