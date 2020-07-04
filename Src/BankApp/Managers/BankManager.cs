@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BankApp.Interfaces;
 using BankApp.Models;
 
 namespace BankApp.Managers
 {
-    class BankManager
+    class BankManager:IBankManager
     {
-        private readonly IList<Client> _clients = new List<Client>();
+        private IList<Client> _clients = new List<Client>();
         private readonly ClientManager _clientManager = new ClientManager();
 
         public void Put(string id, decimal money)
@@ -38,6 +39,10 @@ namespace BankApp.Managers
         {
             return _clients;
         }
+        public void GetClientInfo(Client client)
+        {
+            _clientManager.GetInfo(client);
+        }
         public void GetAllClients()
         {
             if (_clients.Count > 0)
@@ -51,11 +56,6 @@ namespace BankApp.Managers
             {
                 Console.WriteLine("Bank has no clients");
             }
-
-        }
-        public GetClientById(string id)
-        {
-
         }
     }
 }

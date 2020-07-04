@@ -12,11 +12,13 @@ namespace BankApp.Models
 
         public Client()
         {
+            _id = Guid.NewGuid().ToString();
             _fullname = "Default";
             _balance = 0;
         }
         public Client(string fullname)
         {
+            _id = Guid.NewGuid().ToString();
             _fullname = fullname;
         }
         public Client(string fullname,decimal balance)

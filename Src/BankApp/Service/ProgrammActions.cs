@@ -2,6 +2,8 @@
 using BankApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security;
 using System.Text;
 
 namespace BankApp
@@ -10,7 +12,7 @@ namespace BankApp
     {
         private static readonly ClientManager _clientManager = new ClientManager();
         private static readonly BankManager _bankManager = new BankManager();
-        public static void InputAnimal()
+        public static void InputClient()
         {
             Console.Write("Enter name: ");
             var name = Console.ReadLine();
@@ -27,25 +29,8 @@ namespace BankApp
             Console.WriteLine("Enter your balance: ");
             decimal.TryParse(Console.ReadLine(), out decimal balance);
             client.UpdateBalance(balance);
-
-            //console.writeline("укажите тип животного:\n 1 - хищник \n 2 - травоядное ");
-            //int.tryparse(console.readline(), out int userinput);
-            //switch (userinput)
-            //{
-            //    case 1:
-            //        animal.kind = enums.kindtype.predator;
-            //        break;
-            //    case 2:
-            //        animal.kind = enums.kindtype.herbivorus;
-            //        break;
-            //    default:
-            //        console.writeline("некорректный ввод");
-            //        animal.kind = enums.kindtype.none;
-            //        break;
-            //}
             _bankManager.GetClients().Add(client);
             Console.WriteLine("Client successfully added");
-
         }
         public static void DeleteClient()
         {
@@ -53,20 +38,19 @@ namespace BankApp
             {
                 Console.Write("Enter id of client which you wanna remowe: ");
                 var input = Console.ReadLine();
-                if (.animals != null)
+                Client client;
+                if ((client = ChooseClient()) != null)
                 {
-                    _zoo.animals.RemoveAt(input - 1);
+                    _bankManager.GetClients().Remove(client);
                 }
                 else
-                    Console.WriteLine("");
+                    Console.WriteLine("Client with such id not found");
             }
             catch (Exception)
             {
-                Console.WriteLine("В зоопарке нет животного с таким номером");
+                Console.WriteLine("Error");
             }
-
-
-            Console.WriteLine("Животное успешно удалено");
+            Console.WriteLine("Client sucsessefuly deleted");
         }
         public static void GetAllClients()
         {
@@ -75,24 +59,27 @@ namespace BankApp
         public static void GetClient()
         {
             Client client;
-            if ((client = ChooseClient()) != null)
+            if((client = ChooseClient()) != null)
             {
-                _clientManager.GetInfo(client);
+                _bankManager.GetClientInfo(client);
             }
         }
-        private static Animal ChooseClient()
+        public static Client ChooseClient()
         {
             Console.Write("Enter id of client: ");
             Client client;
-            if (Guid.TryParse(Console.ReadLine(), out Guid id) && (client = .GetAnimalbyId(id)) != null)
+            string id = Console.ReadLine();
+            client = (Client)_bankManager.GetClients().Where(c => c._id.Contains(id));
+            if(client != null)
             {
-                return animal;
+                return client;
             }
             else
             {
                 Console.WriteLine("Client with such id not found");
                 return null;
             }
+        
         }
         public static void ShowMenu()
         {
