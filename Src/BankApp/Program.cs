@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankApp.Models;
+using System;
 
 namespace BankApp
 {
@@ -14,22 +15,22 @@ namespace BankApp
                 {
                     case 1:
                         {
-                            ProgrammActions.InputAnimal();
+                            ProgrammActions.InputClient();
                             break;
                         }
                     case 2:
                         {
-                            ProgrammActions.DeleteAnimal();
+                            ProgrammActions.DeleteClient();
                             break;
                         }
                     case 3:
                         {
-                            ProgrammActions.GetAnimal();
+                            ProgrammActions.GetClient();
                             break;
                         }
                     case 4:
                         {
-                            ProgrammActions.GetAllAnimals();
+                            ProgrammActions.GetAllClients();
                             break;
                         }
                     case 5:
@@ -39,7 +40,7 @@ namespace BankApp
                         break;
                     default:
                         {
-                            Console.WriteLine("Команда не найдена:");
+                            Console.WriteLine("Command doesn't exists:");
                         }
                         break;
                 }

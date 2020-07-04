@@ -10,6 +10,11 @@ namespace BankApp.Models
         private string _fullname;
         private decimal _balance;
 
+        public Client()
+        {
+            _fullname = "Default";
+            _balance = 0;
+        }
         public Client(string fullname)
         {
             _fullname = fullname;

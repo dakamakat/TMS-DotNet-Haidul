@@ -25,5 +25,17 @@ namespace BankApp.Managers
                 Console.WriteLine("Cant change name");
             }
         }
+        public Client CreateClient()
+        {
+            return new Client();
+        }
+        public Client CreateClient(string name)
+        {
+            return new Client(name);
+        }
+        public Client CreateClient(string name, decimal balance)
+        {
+            return new Client(name, balance);
+        }
     }
 }
