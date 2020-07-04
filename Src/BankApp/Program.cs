@@ -35,6 +35,16 @@ namespace BankApp
                         }
                     case 5:
                         {
+                            ProgrammActions.TakeMoney();
+                        }
+                        break;
+                    case 6:
+                        {
+                            ProgrammActions.PutMoney();
+                        }
+                        break;
+                    case 7:
+                        {
                             Environment.Exit(0);
                         }
                         break;

@@ -36,7 +36,6 @@ namespace BankApp
         {
             try
             {
-                Console.Write("Enter id of client which you wanna remowe: ");
                 var input = Console.ReadLine();
                 Client client;
                 if ((client = ChooseClient()) != null)
@@ -81,6 +80,22 @@ namespace BankApp
             }
         
         }
+        public static void TakeMoney()
+        {
+            Console.WriteLine("Enter id of client");
+            var id = Console.ReadLine();
+            Console.WriteLine("Enter a sum");
+            decimal.TryParse(Console.ReadLine(), out decimal money);
+            _bankManager.Take(id, money);           
+        }
+        public static void PutMoney()
+        {
+            Console.WriteLine("Enter id of client");
+            var id = Console.ReadLine();
+            Console.WriteLine("Enter a sum");
+            decimal.TryParse(Console.ReadLine(), out decimal money);
+            _bankManager.Put(id, money);
+        }
         public static void ShowMenu()
         {
             Console.WriteLine("Choose action :");
@@ -88,6 +103,9 @@ namespace BankApp
             Console.WriteLine("2.Delete client :");
             Console.WriteLine("3.Show client :");
             Console.WriteLine("4.Show all clients :");
+            Console.WriteLine("5.Take money :");
+            Console.WriteLine("6. Put money :");
+            Console.WriteLine("7. Exit :");
 
         }
     }
