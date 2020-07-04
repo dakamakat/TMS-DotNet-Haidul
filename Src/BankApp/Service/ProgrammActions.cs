@@ -71,6 +71,7 @@ namespace BankApp
             {
                 if (client._id.Contains(id))
                 {
+                    Console.WriteLine($"You choosed {client.GetFullName()}");
                     return client;
                 }
                 
@@ -82,20 +83,27 @@ namespace BankApp
         {
             Client client;
             client = ChooseClient();
-            Console.WriteLine("Enter a sum : ");
-            decimal.TryParse(Console.ReadLine(), out decimal money);
-            _bankManager.Take(client, money);
+            if(client != null)
+            {
+                Console.WriteLine("Enter a sum : ");
+                decimal.TryParse(Console.ReadLine(), out decimal money);
+                _bankManager.Take(client, money);
+            }
+         
 
         }
         public static void PutMoney()
         {
             Client client;
             client = ChooseClient();
-            Console.WriteLine("Enter a sum : ");
-            decimal.TryParse(Console.ReadLine(), out decimal money);
-            _bankManager.Put(client, money);
+            if (client != null)
+            {
+                Console.WriteLine("Enter a sum : ");
+                decimal.TryParse(Console.ReadLine(), out decimal money);
+                _bankManager.Put(client, money);
+            }
         }
-        public static void ShowMenu()
+            public static void ShowMenu()
         {
             Console.WriteLine("Choose action :");
             Console.WriteLine("1.Add new client :");
@@ -103,9 +111,8 @@ namespace BankApp
             Console.WriteLine("3.Show client :");
             Console.WriteLine("4.Show all clients :");
             Console.WriteLine("5.Take money :");
-            Console.WriteLine("6. Put money :");
-            Console.WriteLine("7. Exit :");
-
+            Console.WriteLine("6.Put money :");
+            Console.WriteLine("7.Exit :\n");
         }
     }
 }
