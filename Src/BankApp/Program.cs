@@ -20,30 +20,40 @@ namespace BankApp
                         }
                     case 2:
                         {
-                            ProgrammActions.DeleteClient();
+                            ProgrammActions.InputClient();
                             break;
                         }
                     case 3:
                         {
-                            ProgrammActions.GetClient();
+                            ProgrammActions.InputClient();
                             break;
                         }
                     case 4:
                         {
-                            ProgrammActions.GetAllClients();
+                            ProgrammActions.DeleteClient();
                             break;
                         }
                     case 5:
                         {
+                            ProgrammActions.GetClient();
+                            break;
+                        }
+                    case 6:
+                        {
+                            ProgrammActions.GetAllClients();
+                            break;
+                        }
+                    case 7:
+                        {
                             ProgrammActions.TakeMoney();
                         }
                         break;
-                    case 6:
+                    case 8:
                         {
                             ProgrammActions.PutMoney();
                         }
                         break;
-                    case 7:
+                    case 9:
                         {
                             Environment.Exit(0);
                         }

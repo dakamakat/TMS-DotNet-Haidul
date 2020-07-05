@@ -33,6 +33,41 @@ namespace BankApp
             _bankManager.GetClients().Add(client);
             Console.WriteLine("Client successfully added");
         }
+        public static void InputAccount()
+        {
+            Client client;
+            client = ChooseClient();
+            Console.WriteLine(@"Choose type of money\n 1.USD\n2.BYN\n3.RUB");
+            int.TryParse(Console.ReadLine(), out int userInput);
+            Account account = new Account();
+            switch (userInput)
+            {
+                case 1:
+                    {
+                        account.Type = MoneyType.USD;
+                        break;
+                    }
+                case 2:
+                    {
+                        account.Type = MoneyType.BYN;
+                        break;
+                    }
+                case 3:
+                    {
+                        account.Type = MoneyType.RUB;
+                        break;
+                    }
+            }
+            Console.WriteLine("Enter balance of your account: ");
+            decimal.TryParse(Console.ReadLine(), out decimal balance);
+            account.Balance = balance;
+            client.GetAccounts().Add(account);
+            Console.WriteLine("Account sucsessefully added");
+        }
+        public static void ConvertMoney(Account account1 , Account account2)
+        {
+
+        }
         public static void DeleteClient()
         {
             try
@@ -103,16 +138,24 @@ namespace BankApp
                 _bankManager.Put(client, money);
             }
         }
-            public static void ShowMenu()
+        public static void ShowMenu()
         {
             Console.WriteLine("Choose action :");
             Console.WriteLine("1.Add new client :");
-            Console.WriteLine("2.Delete client :");
-            Console.WriteLine("3.Show client :");
-            Console.WriteLine("4.Show all clients :");
-            Console.WriteLine("5.Take money :");
-            Console.WriteLine("6.Put money :");
-            Console.WriteLine("7.Exit :\n");
+            Console.WriteLine("2.Add new account to client");
+            Console.WriteLine("3.Convert money");
+            Console.WriteLine("4.Delete client :");
+            Console.WriteLine("5.Show client :");
+            Console.WriteLine("6.Show all clients :");
+            Console.WriteLine("7.Take money :");
+            Console.WriteLine("8.Put money :");
+            Console.WriteLine("9.Exit :\n");
+        }
+        public static void ShowMassage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

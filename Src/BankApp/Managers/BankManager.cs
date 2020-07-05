@@ -12,6 +12,9 @@ namespace BankApp.Managers
         private readonly IList<Client> _clients = new List<Client>();
         private readonly ClientManager _clientManager = new ClientManager();
 
+        public delegate void BankHeandler(string message);
+        public event BankHeandler Notify;
+
         public void Put(Client client, decimal money)
         {
             if (client != null)
@@ -25,7 +28,7 @@ namespace BankApp.Managers
             {
                 if (client.GetBalance() <= money)
                 {
-                    Console.WriteLine("Your balance is lower than sum which you wanna take");
+                    Notify?.Invoke("Your balance is lower than sum which you wanna take");
                 }
                 else
                 {
@@ -33,6 +36,13 @@ namespace BankApp.Managers
                 }
             }
         }
+
+
+
+
+
+
+
         public void GetClientInfo(Client client)
         {
             _clientManager.GetInfo(client);
@@ -52,7 +62,7 @@ namespace BankApp.Managers
             }
             else
             {
-                Console.WriteLine("Bank has no clients");
+                Notify?.Invoke("Bank has no clients");
             }
         }
     }
