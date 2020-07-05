@@ -13,6 +13,7 @@ namespace BankApp
     {
         private static readonly ClientManager _clientManager = new ClientManager();
         private static readonly BankManager _bankManager = new BankManager();
+        private static readonly AccountManager _accountManager = new AccountManager();
         public static void InputClient()
         {
             Console.Write("Enter name: ");
@@ -61,12 +62,57 @@ namespace BankApp
             Console.WriteLine("Enter balance of your account: ");
             decimal.TryParse(Console.ReadLine(), out decimal balance);
             account.Balance = balance;
-            client.GetAccounts().Add(account);
-            Console.WriteLine("Account sucsessefully added");
+            if(client != null)
+            {
+                client.GetAccounts().Add(account);
+                Console.WriteLine("Account sucsessefully added");
+            }
+            else
+            {
+                Console.WriteLine("Cant add account");
+            }     
         }
-        public static void ConvertMoney(Account account1 , Account account2)
+        public static void ConvertMoney()
         {
-
+            Account account1 = ChooseAccount();
+            Account account2 = ChooseAccount();
+            if (account1 != null && account1.Type != MoneyType.BYN)
+            {
+                Console.WriteLine("Can convert only BYN");
+            }
+            if(account2 != null)
+            {
+                Console.WriteLine($"Account {account2.Id} didnt exist");
+            }
+            else
+            {
+                Console.WriteLine(@"Choose type of conversion 1.USD 2.BYN 3.RUB");
+                int.TryParse(Console.ReadLine(), out int type);
+                Console.WriteLine("Enter amount of money which you wanna convert");
+                decimal.TryParse(Console.ReadLine(), out decimal money);
+                switch (type)
+                {
+                    case 1:
+                        {
+                            account1.Balance -= money;
+                            account2.Balance += Convert.ToDecimal(Convert.ToDouble(money) / 2.4);
+                            break;
+                        }
+                    case 2:
+                        {
+                            account1.Balance -= money;
+                            account2.Balance += Convert.ToDecimal(Convert.ToDouble(money) / 0.43);
+                            break;
+                        }
+                    case 3:
+                        {
+                            account1.Balance -= money;
+                            account2.Balance += Convert.ToDecimal(Convert.ToDouble(money) / 0.3);
+                            break;
+                        }
+                }
+                Console.WriteLine("Conwertatioin sucsesseful");
+            }
         }
         public static void DeleteClient()
         {
@@ -86,16 +132,54 @@ namespace BankApp
             }
             Console.WriteLine("Client sucsessefuly deleted");
         }
+        public static void DeleteAccount()
+        {
+            try
+            {
+                Client client;
+                client = ChooseClient();
+                Account account = new Account();
+                account = ChooseAccount();
+                if (client != null || account != null)
+                {
+                    client.GetAccounts().Remove(account);
+                }
+                else
+                    Console.WriteLine("Account or client with such id not found");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error");
+            }
+            Console.WriteLine("Account sucsessefuly deleted");
+        }
         public static void GetAllClients()
         {
             _bankManager.GetAllClients();
         }
+        public static void GetAllAccounts()
+        {
+            Client client = ChooseClient();
+            client.GetAllAccounts();
+        }
+
         public static void GetClient()
         {
             Client client;
             if((client = ChooseClient()) != null)
             {
                 _bankManager.GetClientInfo(client);
+            }
+        }
+        public static void GetAccount()
+        {
+            Client client;
+            client = ChooseClient();
+            Account account = new Account();
+            account = ChooseAccount();
+            if ((client = ChooseClient()) != null || account != null)
+            {
+                _accountManager.GetInfo(account);
             }
         }
         public static Client ChooseClient()
@@ -108,12 +192,31 @@ namespace BankApp
                 {
                     Console.WriteLine($"You choosed {client.GetFullName()}");
                     return client;
-                }
-                
+                }                
             }
             Console.WriteLine("Client with such id not found");
             return null;
         }
+        public static Account ChooseAccount()
+        {
+            Client client;
+            client = ChooseClient();
+            Console.Write("Enter id of account: ");
+            var id = Console.ReadLine();
+            if(client != null)
+            {
+                foreach (var account in client.GetAccounts())
+                {
+                    if (account.Id.Contains(id))
+                    {
+                        Console.WriteLine($"You choosed {account.GetType()}");
+                        return account;
+                    }
+                }
+            }               
+            return null;
+        }
+
         public static void TakeMoney()
         {
             Client client;
@@ -145,17 +248,14 @@ namespace BankApp
             Console.WriteLine("2.Add new account to client");
             Console.WriteLine("3.Convert money");
             Console.WriteLine("4.Delete client :");
-            Console.WriteLine("5.Show client :");
-            Console.WriteLine("6.Show all clients :");
-            Console.WriteLine("7.Take money :");
-            Console.WriteLine("8.Put money :");
-            Console.WriteLine("9.Exit :\n");
-        }
-        public static void ShowMassage(string message)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("5.Delete account :");
+            Console.WriteLine("6.Show client :");
+            Console.WriteLine("7.Show account :");
+            Console.WriteLine("8.Show all accounts :");
+            Console.WriteLine("9.Show all clients :");
+            Console.WriteLine("10.Put money :");
+            Console.WriteLine("11.Take money :");
+            Console.WriteLine("12.Exit :\n");
         }
     }
 }

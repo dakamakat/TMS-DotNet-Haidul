@@ -20,12 +20,12 @@ namespace BankApp
                         }
                     case 2:
                         {
-                            ProgrammActions.InputClient();
+                            ProgrammActions.InputAccount();
                             break;
                         }
                     case 3:
                         {
-                            ProgrammActions.InputClient();
+                            ProgrammActions.ConvertMoney();
                             break;
                         }
                     case 4:
@@ -35,25 +35,40 @@ namespace BankApp
                         }
                     case 5:
                         {
-                            ProgrammActions.GetClient();
+                            ProgrammActions.DeleteAccount();
                             break;
                         }
                     case 6:
                         {
-                            ProgrammActions.GetAllClients();
+                            ProgrammActions.GetClient();
                             break;
                         }
                     case 7:
                         {
-                            ProgrammActions.TakeMoney();
+                            ProgrammActions.GetAccount();
                         }
                         break;
                     case 8:
                         {
-                            ProgrammActions.PutMoney();
+                            ProgrammActions.GetAllAccounts();
                         }
                         break;
                     case 9:
+                        {
+                            ProgrammActions.GetAllClients();
+                        }
+                        break;
+                    case 10:
+                        {
+                            ProgrammActions.PutMoney();
+                        }
+                        break;
+                    case 11:
+                        {
+                            ProgrammActions.TakeMoney();
+                        }
+                        break;
+                    case 12:
                         {
                             Environment.Exit(0);
                         }

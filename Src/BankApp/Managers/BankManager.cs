@@ -36,13 +36,6 @@ namespace BankApp.Managers
                 }
             }
         }
-
-
-
-
-
-
-
         public void GetClientInfo(Client client)
         {
             _clientManager.GetInfo(client);
