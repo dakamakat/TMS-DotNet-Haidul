@@ -38,7 +38,7 @@ namespace BankApp
         {
             Client client;
             client = ChooseClient();
-            Console.WriteLine(@"Choose type of money\n 1.USD\n2.BYN\n3.RUB");
+            Console.WriteLine(@"Choose type of money 1.USD 2.BYN 3.RUB");
             int.TryParse(Console.ReadLine(), out int userInput);
             Account account = new Account();
             switch (userInput)
@@ -80,7 +80,7 @@ namespace BankApp
             {
                 Console.WriteLine("Can convert only BYN");
             }
-            if(account2 != null)
+            if(account2 == null)
             {
                 Console.WriteLine($"Account {account2.Id} didnt exist");
             }
