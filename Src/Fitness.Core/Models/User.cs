@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Fitness.Core.Models
 {
-    public class Person
+    public class User
     {
+        public string Id { get;} = Guid.NewGuid().ToString();
         public string Name { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
