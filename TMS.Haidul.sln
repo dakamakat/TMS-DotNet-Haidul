@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooApp", "Src\ZooApp\ZooApp.csproj", "{A904D2D1-01A4-4FF7-B72A-14CC0140F683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApp", "Src\BankApp\BankApp.csproj", "{52EE903A-95D3-47F5-89E8-648715282B67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A904D2D1-01A4-4FF7-B72A-14CC0140F683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A904D2D1-01A4-4FF7-B72A-14CC0140F683}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A904D2D1-01A4-4FF7-B72A-14CC0140F683}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A904D2D1-01A4-4FF7-B72A-14CC0140F683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52EE903A-95D3-47F5-89E8-648715282B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52EE903A-95D3-47F5-89E8-648715282B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52EE903A-95D3-47F5-89E8-648715282B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52EE903A-95D3-47F5-89E8-648715282B67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
