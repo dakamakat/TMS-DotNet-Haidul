@@ -39,7 +39,7 @@ namespace Fitness.Core.Service
             var id = Console.ReadLine();
             if (!string.IsNullOrEmpty(id))
             {
-                Console.WriteLine("Choose exersize: 1. Jump\n2. Run");
+                Console.WriteLine("Choose exersize:\n1. Jump\n2. Run");
                 int.TryParse(Console.ReadLine(), out int result);
                 switch (result)
                 {

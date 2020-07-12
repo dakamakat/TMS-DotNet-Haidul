@@ -110,12 +110,14 @@ namespace Fitness.Core.Managers
             }
             foreach (var info in user.CaloriesPerDay)
             {
+                Console.WriteLine(user.Name);
                 Console.WriteLine($"Date : {info.Date}, Type : {info.Type}, Calories : {info.Calories}");
             }
         }
         public User ChooseUserById(string id)
         {
             var user = people.FirstOrDefault(u => u.Id.Contains(id));
+            Console.WriteLine($"Choosed user: {user.Name}");
             return user;
         }
         public User ChooseUserById()
@@ -123,6 +125,7 @@ namespace Fitness.Core.Managers
             Console.Write("Enter id of user: ");
             var id = Console.ReadLine();
             var user = people.FirstOrDefault(u => u.Id.Contains(id));
+            Console.WriteLine($"Choosed user: {user.Name}");
             return user;
         }
         public void GetAllUsers()

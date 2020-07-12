@@ -3,7 +3,7 @@ using System;
 using Fitness.Core.Managers;
 using System.ComponentModel;
 using System.Collections.Generic;
-using Fitness.Core.
+using Fitness.Core.Service;
 
 namespace Fitness.ConsoleApp
 {
@@ -11,34 +11,35 @@ namespace Fitness.ConsoleApp
     {
         static void Main(string[] args)
         {
-            UserManager userManager = new UserManager();
-            userManager.CreateUser("James", 33, 120, 166);
-            userManager.CreateUser("Mary", 43, 78, 173);
-            userManager.GetAllUsers();
             while (true)
             {
-                .ShowMenu();
+                ProgrammActions.ShowMenu();
                 int.TryParse(Console.ReadLine(), out int userInput);
                 switch (userInput)
                 {
                     case 1:
                         {
-                            .InputClient();
+                            ProgrammActions.AddUser();
                             break;
                         }
                     case 2:
                         {
-                            ProgrammActions.InputAccount();
+                            ProgrammActions.RemoveUser();
                             break;
                         }
                     case 3:
                         {
-                            ProgrammActions.ConvertMoney();
+                            ProgrammActions.DoExersize();
                             break;
                         }
-                    case 12:
+                    case 4:
                         {
-                            Environment.Exit(0);
+                            ProgrammActions.GetStatistics();
+                        }
+                        break;
+                    case 5:
+                        {
+                            ProgrammActions.ShowAllUsers();
                         }
                         break;
                     default:
