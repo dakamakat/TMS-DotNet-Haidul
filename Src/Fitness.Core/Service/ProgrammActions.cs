@@ -37,6 +37,7 @@ namespace Fitness.Core.Service
         {
             Console.WriteLine("Enter Id of user:");
             var id = Console.ReadLine();
+            _userManager.ChooseUserById(id);
             if (!string.IsNullOrEmpty(id))
             {
                 Console.WriteLine("Choose exersize:\n1. Jump\n2. Run");
