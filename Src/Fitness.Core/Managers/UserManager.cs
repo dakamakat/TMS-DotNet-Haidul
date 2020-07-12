@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Fitness.Core.Managers
 {
-    class UserManager : IUserManager
+    public class UserManager : IUserManager
     {
         private readonly IList<User> people;
         private readonly IExerciseManager _exerciseManager;
@@ -48,6 +48,10 @@ namespace Fitness.Core.Managers
                 Height = height
             };
             people.Add(user);
+        }
+        public void DeleteUser()
+        {
+            people.Remove(ChooseUserById());
         }
         public void DoExerciseRun(string id,double distance)
         {
@@ -96,10 +100,37 @@ namespace Fitness.Core.Managers
                 Console.WriteLine($"Date : {info.Date}, Type : {info.Type}, Calories : {info.Calories}");
             }
         }
+        public void GetStatistics()
+        {
+            var user = ChooseUserById();
+            if (user == null)
+            {
+                Console.WriteLine("User not found");
+                return;
+            }
+            foreach (var info in user.CaloriesPerDay)
+            {
+                Console.WriteLine($"Date : {info.Date}, Type : {info.Type}, Calories : {info.Calories}");
+            }
+        }
         public User ChooseUserById(string id)
         {
             var user = people.FirstOrDefault(u => u.Id.Contains(id));
             return user;
+        }
+        public User ChooseUserById()
+        {
+            Console.Write("Enter id of user: ");
+            var id = Console.ReadLine();
+            var user = people.FirstOrDefault(u => u.Id.Contains(id));
+            return user;
+        }
+        public void GetAllUsers()
+        {
+            foreach(var user in people)
+            {
+                user.GetInfo();
+            }
         }
     }
 }
