@@ -9,11 +9,15 @@ namespace Cash.ConsoleApp
     {
         static void Main(string[] args)
         {
-            IClientManager clientManager = new ClientManager();
+            ClientManager clientManager = new ClientManager();
+            StoreCashManager storeCashManager = new StoreCashManager(5);
             clientManager.CreateClient();
             clientManager.CreateClient();
             clientManager.ShowAllClients();
             clientManager.ShowClientBasket();
+            storeCashManager.GenerateStoreCash();
+            storeCashManager.ShowStoreCashes();
+
             Console.ReadKey();
         }
     }

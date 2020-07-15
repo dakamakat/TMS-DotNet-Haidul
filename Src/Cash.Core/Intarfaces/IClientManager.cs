@@ -5,7 +5,7 @@ using Cash.Core.Models;
 
 namespace Cash.Core.Intarfaces
 {
-     public interface IClientManager
+     interface IClientManager
     {
         public void CreateClient();
         public void ShowAllClients();

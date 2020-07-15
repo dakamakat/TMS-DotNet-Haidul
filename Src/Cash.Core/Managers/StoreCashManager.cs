@@ -1,11 +1,12 @@
-﻿using Cash.Core.Models;
+﻿using Cash.Core.Intarfaces;
+using Cash.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cash.Core.Managers
 {
-    public class StoreCashManager
+    public class StoreCashManager:IStoreCashManager
     {
         private readonly int _cashisonline;
         private readonly IList<StoreCash> storeCashes;
@@ -28,10 +29,6 @@ namespace Cash.Core.Managers
             {
                 cashe.GetInfo();
             }
-        }
-        internal IList<StoreCash> GetAllCashes()
-        {
-            return storeCashes;
         }
     }
 }
