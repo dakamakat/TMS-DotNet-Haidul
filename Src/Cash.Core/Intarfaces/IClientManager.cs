@@ -8,7 +8,7 @@ namespace Cash.Core.Intarfaces
      public interface IClientManager
     {
         public void CreateClient();
-        public void GetAllClients();
+        public void ShowAllClients();
         public void GetClientBasket();
         public void ShowClientBasket();
     }

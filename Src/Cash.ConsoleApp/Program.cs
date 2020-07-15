@@ -11,7 +11,8 @@ namespace Cash.ConsoleApp
         {
             IClientManager clientManager = new ClientManager();
             clientManager.CreateClient();
-            clientManager.GetAllClients();
+            clientManager.CreateClient();
+            clientManager.ShowAllClients();
             clientManager.ShowClientBasket();
             Console.ReadKey();
         }
