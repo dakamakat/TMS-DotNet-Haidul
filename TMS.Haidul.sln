@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash.ConsoleApp", "Src\Cash.ConsoleApp\Cash.ConsoleApp.csproj", "{FE0C754C-468A-4B43-8715-E92ACC11E78A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash.Core", "Src\Cash.Core\Cash.Core.csproj", "{1009B977-347B-427F-9C7D-26A08ED7764C}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE0C754C-468A-4B43-8715-E92ACC11E78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0C754C-468A-4B43-8715-E92ACC11E78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0C754C-468A-4B43-8715-E92ACC11E78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0C754C-468A-4B43-8715-E92ACC11E78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1009B977-347B-427F-9C7D-26A08ED7764C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1009B977-347B-427F-9C7D-26A08ED7764C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1009B977-347B-427F-9C7D-26A08ED7764C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1009B977-347B-427F-9C7D-26A08ED7764C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
