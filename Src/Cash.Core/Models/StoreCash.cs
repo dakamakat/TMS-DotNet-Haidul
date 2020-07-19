@@ -10,6 +10,7 @@ namespace Cash.Core.Models
         public string StoreCashNumber { get; set; }
         public int Speed { get; set; }
         public bool IsFree { get; set; } = true;
+        private int _balanceofCash = 0;
         public StoreCash()
         {
             var random = new Random();
@@ -19,6 +20,18 @@ namespace Cash.Core.Models
          public void GetInfo()
         {
             Console.WriteLine($"Cash number:{StoreCashNumber}\nCash Speed:{Speed}\n");
+        }
+        public int GetBalance()
+        {
+            return _balanceofCash;
+        }
+        public void SetBalance(int value)
+        {
+            _balanceofCash += value;
+        }
+        public void ShowBalance()
+        {
+            Console.WriteLine($"Balance of Cash {StoreCashNumber} = {_balanceofCash}");
         }
     }
 }

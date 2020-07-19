@@ -16,7 +16,7 @@ namespace Cash.Core.Managers
         public void CreateClient()
         {
             Client client = new Client();
-            FeelBasket(client);
+            FeelBasket(client); 
             Clients.Add(client);
         }
         private void FeelBasket(Client client)

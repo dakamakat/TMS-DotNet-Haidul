@@ -9,11 +9,23 @@ namespace Cash.Core.Models
     {
         public string  Name { get; set; }
         private readonly IList<Product> basket = new List<Product>();
-        public Thread thread;
-        
+        private int balance;
+
+        public int GetBalance()
+        {
+            return balance;
+        }
+
+        private void SetBalance(int value)
+        {
+            balance = value;
+        }
+
         public Client()
         {
+            var random = new Random();
             Name = Guid.NewGuid().ToString();
+            SetBalance(random.Next(900,2000));
         }
         public void GetClient()
         {
