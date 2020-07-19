@@ -69,7 +69,7 @@ namespace Cash.Core.Managers
                     Console.ForegroundColor = ConsoleColor.Green;
                     selectedcash.SetBalance(CalculateCost(client));
                     client.SetBalance(CalculateCost(client));
-                    Console.WriteLine($"the purchase is successful: purchased goods worth {CalculateCost(client)}");
+                    Console.WriteLine($"the purchase of {client.Name} is successful: purchased goods worth {CalculateCost(client)}");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
