@@ -5,21 +5,20 @@ using System.Threading;
 
 namespace Cash.Core.Models
 {
-    class StoreCash
+    public class StoreCash
     {
-        public int StoreCashNumber { get; set; }
+        public string StoreCashNumber { get; set; }
         public int Speed { get; set; }
-
+        public bool IsFree { get; set; } = true;
         public StoreCash()
         {
             var random = new Random();
-            StoreCashNumber = random.Next(3522, 3275);
-            new Semaphore(1, 1);
-            Speed = random.Next(800, 1000);
+            StoreCashNumber = Guid.NewGuid().ToString();
+            Speed = random.Next(100, 500);
         }
          public void GetInfo()
         {
-            Console.WriteLine($"Cash number:{StoreCashNumber}\nCash Speed:{Speed}");
+            Console.WriteLine($"Cash number:{StoreCashNumber}\nCash Speed:{Speed}\n");
         }
     }
 }

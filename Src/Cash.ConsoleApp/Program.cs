@@ -2,6 +2,7 @@
 using Cash.Core.Managers;
 using Cash.Core.Models;
 using Cash.Core.Intarfaces;
+using System.Linq;
 
 namespace Cash.ConsoleApp
 {
@@ -10,14 +11,20 @@ namespace Cash.ConsoleApp
         static void Main(string[] args)
         {
             ClientManager clientManager = new ClientManager();
-            StoreCashManager storeCashManager = new StoreCashManager(5);
-            clientManager.CreateClient();
-            clientManager.CreateClient();
-            clientManager.ShowAllClients();
-            clientManager.ShowClientBasket();
-            storeCashManager.GenerateStoreCash();
-            storeCashManager.ShowStoreCashes();
+            Console.WriteLine("Entee number of clients:");
+            int.TryParse(Console.ReadLine(), out int userinp);
 
+            for (int i = 0; i < userinp; i++)
+            {
+                clientManager.CreateClient();
+            }
+            clientManager.ShowAllClients();
+            Console.WriteLine("Enter a number of cashes:");
+            int.TryParse(Console.ReadLine(), out int userinput);
+            StoreCashManager storeCashManager = new StoreCashManager(userinput);
+            storeCashManager.GenerateStoreCash();
+            storeCashManager.ClientHeandler(clientManager);
+            storeCashManager.ServeClient();
             Console.ReadKey();
         }
     }

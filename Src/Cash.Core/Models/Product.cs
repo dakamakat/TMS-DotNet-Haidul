@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cash.Core
 {
-    class Product
+    public class Product
     {
         public string Name { get; set; }
         public int Cost { get; set; }
@@ -17,7 +17,7 @@ namespace Cash.Core
         }
         public void Getinfo()
         {
-            Console.WriteLine($"Name of product:{Name}\n Cost of product:{Cost}");
+            Console.WriteLine($"Name of product:{Name}\n Cost of product:{Cost}\n");
         }
     }
 }

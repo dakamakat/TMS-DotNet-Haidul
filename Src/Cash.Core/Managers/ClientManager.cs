@@ -28,6 +28,10 @@ namespace Cash.Core.Managers
                 client.GetBasket().Add(new Product());
             }
         }
+        public IList<Client> GetAllClients()
+        {
+            return Clients;
+        }
         public void ShowAllClients()
         {
             foreach (var client in Clients)
@@ -46,7 +50,7 @@ namespace Cash.Core.Managers
         {
             foreach (var client in Clients)
             {
-                Console.WriteLine($"{client.Name} products");
+                Console.WriteLine($"Show products of this client:{client.Name}\n");
                 client.ShowBasket();
             }
         }

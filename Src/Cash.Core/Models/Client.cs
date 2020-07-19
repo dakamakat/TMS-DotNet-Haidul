@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Cash.Core.Models
 {
-     class Client
+     public class Client
     {
         public string  Name { get; set; }
         private readonly IList<Product> basket = new List<Product>();
+        public Thread thread;
         
         public Client()
         {
@@ -15,7 +17,7 @@ namespace Cash.Core.Models
         }
         public void GetClient()
         {
-            Console.WriteLine($"Name of Client:{Name}");
+            Console.WriteLine($"Client:{Name}, products in backet:{basket.Count}");
         }
         public void ShowBasket()
         {
