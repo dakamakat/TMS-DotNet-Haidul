@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Cash.Core.Managers
 {
     public class StoreCashManager : IStoreCashManager
     {
-        private ConcurrentQueue<Client> taskQueue;
         public static int _cashisonline;
         private readonly IList<StoreCash> _storeCashes;
         readonly object locker = new object();
@@ -30,18 +30,12 @@ namespace Cash.Core.Managers
         }
         public void ClientHeandler(ClientManager clientManager)
         {
-            int threadCount = _cashisonline;
 
-            taskQueue = new ConcurrentQueue<Client>(clientManager.GetAllClients());
-
-            for (int i = 0; i < threadCount; i++)
-                new Thread(ServeClient) { IsBackground = true }.Start();
+            ParallelLoopResult parallelLoopResult = Parallel.ForEach(clientManager.GetAllClients(),new ParallelOptions { MaxDegreeOfParallelism = _cashisonline },
+                client => { ServeClient(client); });
         }
-        public void ServeClient()
+        public void ServeClient(Client client)
         {
-
-            while (taskQueue.TryDequeue(out Client client))
-            {
                 StoreCash selectedcash;
                 lock (locker)
                 {
@@ -81,8 +75,7 @@ namespace Cash.Core.Managers
                 Console.WriteLine($"Cass:{selectedcash.StoreCashNumber} end to serve client {client.Name} {time}");
                 selectedcash.IsFree = true;
                 Thread.Sleep(200);
-
-            }
+            
         }
         public IList<StoreCash> GetStoreCashes()
         {
