@@ -16,16 +16,16 @@ namespace Cash.Core.Models
             return balance;
         }
 
-        private void SetBalance(int value)
+        public void SetBalance(int value)
         {
-            balance = value;
+            balance =- value;
         }
 
         public Client()
         {
             var random = new Random();
             Name = Guid.NewGuid().ToString();
-            SetBalance(random.Next(900,2000));
+            balance = (random.Next(900,2000));
         }
         public void GetClient()
         {
