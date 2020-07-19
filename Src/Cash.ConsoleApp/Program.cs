@@ -25,6 +25,12 @@ namespace Cash.ConsoleApp
             storeCashManager.GenerateStoreCash();
             storeCashManager.ClientHeandler(clientManager);
             storeCashManager.ServeClient();
+            System.Threading.Thread.Sleep(10000);
+            foreach (var cash in storeCashManager.GetStoreCashes())
+            {       
+                cash.GetInfo();
+                cash.ShowBalance();
+            }
             Console.ReadKey();
         }
     }

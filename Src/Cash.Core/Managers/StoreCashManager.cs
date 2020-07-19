@@ -14,7 +14,6 @@ namespace Cash.Core.Managers
         private ConcurrentQueue<Client> taskQueue;
         public static int _cashisonline;
         private readonly IList<StoreCash> _storeCashes;
-        public ClientManager _clientManager = new ClientManager();
         readonly object locker = new object();
         public StoreCashManager(int cashisonline)
         {
